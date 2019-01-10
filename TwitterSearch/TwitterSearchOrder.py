@@ -294,7 +294,7 @@ class TwitterSearchOrder(TwitterOrder):
         result_type = result_type.lower()
         if result_type in ['mixed', 'recent', 'popular']:
             self.arguments.update({'result_type': '%s' % result_type})
-            self.arguments.update({'extended_tweet': 'true'})
+            self.arguments.update({'tweet_mode':'extended'})
         else:
             raise TwitterSearchException(1003)
             
