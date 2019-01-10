@@ -296,7 +296,13 @@ class TwitterSearchOrder(TwitterOrder):
             self.arguments.update({'result_type': '%s' % result_type})
         else:
             raise TwitterSearchException(1003)
-
+            
+    def set_extended_tweet(self, extended):
+        self.arguments.update(
+            {'extended_tweet': 'true' if extended else 'false'}
+        )
+        
+    
     def set_geocode(self, latitude, longitude, radius, imperial_metric=True):
         """ Sets geolocation parameters to return only tweets by users \
         located within a given radius of the given latitude/longitude. \
