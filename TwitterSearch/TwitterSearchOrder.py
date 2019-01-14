@@ -294,15 +294,23 @@ class TwitterSearchOrder(TwitterOrder):
         result_type = result_type.lower()
         if result_type in ['mixed', 'recent', 'popular']:
             self.arguments.update({'result_type': '%s' % result_type})
+        else:
+            raise TwitterSearchException(1003)
+            
+            
+    def set_extended_mode(self, extended_mode):
+        """ Sets 'exended_mode' parameter to get twitter not truncated
+            DAVIDE BAGLIERI editing
+        :param exended_mode: booleand
+
+        :raises: TwitterSearchException
+        """
+        
+        if extended_mode:
             self.arguments.update({'tweet_mode':'extended'})
         else:
             raise TwitterSearchException(1003)
             
-    def set_extended_tweet(self, extended):
-        self.arguments.update(
-            {'extended_tweet': 'true' if extended else 'false'}
-        )
-        
     
     def set_geocode(self, latitude, longitude, radius, imperial_metric=True):
         """ Sets geolocation parameters to return only tweets by users \
