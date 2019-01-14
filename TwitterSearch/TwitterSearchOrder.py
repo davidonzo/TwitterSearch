@@ -308,8 +308,6 @@ class TwitterSearchOrder(TwitterOrder):
         
         if extended_mode:
             self.arguments.update({'tweet_mode':'extended'})
-        else:
-            raise TwitterSearchException(1003)
             
     
     def set_geocode(self, latitude, longitude, radius, imperial_metric=True):
